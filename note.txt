@@ -1,0 +1,16 @@
+<% if(errors){ %>
+  <%  errors.forEach(err=>{ %>
+    <div class="alert alert-danger">
+      <%= err.msg %>
+        </div>
+        <% }) %>
+        <%} %>
+
+
+        <% if(!validationResults.isEmpty()){ %>
+  <%  validationResults.forEach(err=>{ %>
+    <div class="alert alert-danger">
+      <%= err.msg %>
+        </div>
+        <% }) %>
+        <%} %>
