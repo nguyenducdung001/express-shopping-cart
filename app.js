@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var bodyParser = require("body-parser");
 var session = require("express-session");
-const { body, validationResult } = require("express-validator");
+var expressValidator = require("express-validator");
 const mongoose = require("mongoose");
 var database = require("./config/database").database;
 
@@ -46,6 +46,7 @@ app.use(
 
 //midleware: express-validator
 app.use(express.json());
+app.use(expressValidator());
 
 
 // middleware:express-messages and connect-flash

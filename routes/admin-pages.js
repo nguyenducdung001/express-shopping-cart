@@ -1,5 +1,5 @@
 var express = require("express");
-const { check } = require("express-validator/check");
+const { check, oneOf } = require("express-validator/check");
 var router = express.Router();
 
 
@@ -20,13 +20,14 @@ router.get("/add-page", function (req, res, next)
 // route
 
 router.post("/add-page",
-check('title', 'Title must have value').notEmpty(),
-check('content', 'Content must have value').notEmpty(),
+oneOf([check('title', 'Title must have value').isEmpty(),
+check('content', 'Content must have value').isEmpty(),]),
+
 function (req, res, next) 
 {
+  console.log("req", req.body)
   // express-validator
-  // req.checkBody('title', 'Title must have value').notEmpty();
-  // req.checkBody('content', 'Content must have value').notEmpty();
+
 // body-parser
   var title= req.body.title;
   var slug = req.body.slug.replace(/\s+/g,'-').toLowerCase();
